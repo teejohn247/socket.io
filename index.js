@@ -3,9 +3,9 @@ var socket = require('socket.io');
 
 // App setup
 var app = express();
-var server = app.listen(4000, function(){
-    console.log('listening for requests on port 4000,');
-});
+// var server = app.listen(4000, function(){
+//     console.log('listening for requests on port 4000,');
+// });
 
     // var db = mysql.createConnection({
     //     host: 'localhost',
@@ -14,6 +14,32 @@ var server = app.listen(4000, function(){
     // });
 
     // db.connect(func
+    const port = process.env.PORT || 4000;
+    // const debug = Debug('http');
+
+    var server = app.listen(port, () => {
+        console.log(`Server running on port ${port}`)
+    })
+    
+    // connectDb();
+    
+    
+    // app.get('/api/v1', (req, res) => {
+    //     res.json({
+    //       message: 'Welcome to Dev-Connector API'
+    //     });
+    //   });
+    
+    // app.use('/api/v1', userRouter);
+    // // Server static assets if in production
+    // if (process.env.NODE_ENV === 'production') {
+    //   // Set static folder
+    //   app.use(express.static('public'))
+    //   app.get('*', (req, res) => {
+    //     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    //   });
+    // }
+
 app.use(express.static('public'));
 
 // Socket setup & pass server
